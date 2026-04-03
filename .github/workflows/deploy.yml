@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -30,8 +32,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Copy report data into build
+        run: |
+          if [ -f "report.json" ]; then
+            echo "report.json found, will be included in build output"
+          else
+            echo "No report.json in repo, attempting to fetch from GitHub..."
+            curl -s -f -o report.json \
+              "https://raw.githubusercontent.com/voodo66-hub/gasdaily/main/report.json" \
+              || echo "Warning: Could not fetch report.json, page will show 'not generated' state"
+          fi
+
       - name: Build
         run: npm run build
+
+      - name: Verify report in output
+        run: ls -la out/report.json 2>/dev/null && echo "✅ report.json in output" || echo "⚠️  report.json missing from output"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

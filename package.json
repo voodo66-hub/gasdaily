@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "curl -s -f -o report.json 'https://raw.githubusercontent.com/voodo66-hub/gasdaily/main/report.json' || echo 'No report.json found'",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -19,7 +20,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.2",
+    "eslint-config-next": "^15.5.14",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
