@@ -180,7 +180,7 @@ export default function GasDailyPage() {
   const [fetchState, setFetchState] = useState<FetchState>("loading");
 
   useEffect(() => {
-    fetch("/report.json")
+    fetch("/gasdaily/report.json")
       .then((r) => {
         if (!r.ok) throw new Error("HTTP " + r.status);
         return r.json() as Promise<ReportData>;
