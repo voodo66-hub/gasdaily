@@ -22,6 +22,7 @@ interface NewsItem {
   date?:  string;
   region?: string;
   url?:    string;
+  summary?: string;
 }
 
 interface ReportData {
@@ -353,28 +354,18 @@ export default function GasDailyPage() {
           {report.project_news.length > 0 ? (
             <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
               {report.project_news.map((item, i) => (
-                <li
-                  key={i}
-                  style={{
-                    padding:      "8px 0",
-                    borderBottom: i < report.project_news.length - 1 ? "1px solid #21262d" : "none",
-                    fontSize:     "0.88rem",
-                    color:        "#c9d1d9",
-                    display:      "flex",
-                    justifyContent: "space-between",
-                    flexWrap:     "wrap",
-                    gap:          4,
-                  }}
-                >
-                  {item.url ? (
-                    <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color: "#58a6ff", textDecoration: "underline", flex: 1}}>{item.title}</a>
-                  ) : (
-                    <span style={{flex: 1}}>{item.title}</span>
-                  )}
-                  <span style={{ color: "#484f58", fontSize: "0.75rem", flexShrink: 0 }}>
-                    {item.region && `${item.region} · `}{item.date}
-                    {item.url && <> · <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color: "#58a6ff"}}>🔗</a></>}
-                  </span>
+                <li key={i} style={{padding: "10px 0", borderBottom: i < report.project_news.length - 1 ? "1px solid #21262d" : "none"}}>
+                  <div style={{display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:8, marginBottom: item.summary ? 4 : 0}}>
+                    {item.url ? (
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color:"#58a6ff",textDecoration:"underline",flex:1,fontSize:"0.88rem",fontWeight:600}}>{item.title}</a>
+                    ) : (
+                      <span style={{flex:1,fontSize:"0.88rem",fontWeight:600,color:"#c9d1d9"}}>{item.title}</span>
+                    )}
+                    <span style={{color:"#484f58",fontSize:"0.75rem",flexShrink:0,whiteSpace:"nowrap"}}>
+                      {item.region && `${item.region} · `}{item.date}
+                    </span>
+                  </div>
+                  {item.summary && <p style={{fontSize:"0.8rem",color:"#8b949e",lineHeight:1.5,margin:"2px 0 0",paddingLeft:0}}>{item.summary}</p>}
                 </li>
               ))}
             </ul>
@@ -403,25 +394,18 @@ export default function GasDailyPage() {
                     padding:      "12px 14px",
                   }}
                 >
-                  <p
-                    style={{
-                      fontSize:   "0.85rem",
-                      color:      "#c9d1d9",
-                      margin:     "0 0 6px",
-                      lineHeight: 1.5,
-                    }}
-                  >
+                  <p style={{fontSize:"0.85rem",color:"#c9d1d9",margin:"0 0 4px",lineHeight:1.5,fontWeight:600}}>
                     {item.url ? (
-                      <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color: "#79c0ff", textDecoration: "underline"}}>{item.title}</a>
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color:"#79c0ff",textDecoration:"underline"}}>{item.title}</a>
                     ) : (
                       item.title
                     )}
                   </p>
-                  <p style={{ fontSize: "0.75rem", color: "#484f58", margin: 0 }}>
+                  {item.summary && <p style={{fontSize:"0.78rem",color:"#8b949e",lineHeight:1.5,margin:"0 0 6px"}}>{item.summary}</p>}
+                  <p style={{fontSize:"0.75rem",color:"#484f58",margin:0}}>
                     {item.source && `来源：${item.source}`}
                     {item.source && item.date && " · "}
                     {item.date}
-                    {item.url && <> · <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color: "#58a6ff"}}>🔗查看</a></>}
                   </p>
                 </div>
               ))

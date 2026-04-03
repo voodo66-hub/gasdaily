@@ -1,7 +1,7 @@
 {
   "status": "ok",
   "date": "2026-04-03",
-  "generated_at": "2026-04-03T15:08:53.114297+08:00",
+  "generated_at": "2026-04-03T15:20:32.183546+08:00",
   "price_trends": {
     "北京": {
       "液氧": {
@@ -58,60 +58,44 @@
   "national_avg_comment": "京津冀液氧均价与国际市场基本持平",
   "project_news": [
     {
-      "title": "福建雅鑫电子材料启动年产4万吨电子级氟化氢项目环评公示",
+      "title": "[大项目] 市场早间提示（04-02）",
       "region": "",
       "date": "2026-04-02",
       "source": "我的钢铁网",
-      "url": "https://www.mysteel.com/oilchem/a/26040216/14F0C9EF121322EA.html"
+      "url": "https://www.mysteel.com/oilchem/a/26040216/14F0C9EF121322EA.html",
+      "summary": ""
+    },
+    {
+      "title": "[大项目] 市场早间提示（03-30）",
+      "region": "",
+      "date": "2026-03-30",
+      "source": "我的钢铁网",
+      "url": "https://www.mysteel.com/oilchem/a/26033010/1C2F22D174418FBB.html",
+      "summary": ""
+    },
+    {
+      "title": "[大项目] 市场早间提示（03-27）",
+      "region": "",
+      "date": "2026-03-27",
+      "source": "我的钢铁网",
+      "url": "https://www.mysteel.com/oilchem/a/26032716/C2B5A2338403C742.html",
+      "summary": ""
+    },
+    {
+      "title": "[大项目] 市场早间提示（03-26）",
+      "region": "",
+      "date": "2026-03-26",
+      "source": "我的钢铁网",
+      "url": "https://www.mysteel.com/oilchem/a/26032622/71B112A66807BA85.html",
+      "summary": ""
     },
     {
       "title": "广钢气体成都电子超纯大宗气体项目正式落地",
-      "region": "",
+      "region": "四川省",
       "date": "2026-03-20",
       "source": "我的钢铁网",
-      "url": "https://www.mysteel.com/oilchem/a/26032017/8F9DEBE642D6D724.html"
-    },
-    {
-      "title": "[产能利用率]：中国空分样本企业空分产能利用率周度数据",
-      "region": "",
-      "date": "",
-      "source": "我的钢铁网",
-      "url": "https://www.mysteel.com/oilchem/a/26032621/0657517C0C197C1F.html"
-    },
-    {
-      "title": "[数据分析]：中国空分样本企业空分产能利用率周度数据分析",
-      "region": "",
-      "date": "",
-      "source": "我的钢铁网",
-      "url": "https://www.mysteel.com/oilchem/a/26032621/E28A724F1762FF19.html"
-    },
-    {
-      "title": "[氧氮氩]：沁阳京宇空分检修",
-      "region": "",
-      "date": "",
-      "source": "我的钢铁网",
-      "url": "https://www.mysteel.com/oilchem/a/26032716/D5AD10D2B7649E28.html"
-    },
-    {
-      "title": "空分装置检修汇总表（20260321-0326）",
-      "region": "",
-      "date": "",
-      "source": "我的钢铁网",
-      "url": "https://www.mysteel.com/oilchem/a/26032621/4FE65E00B485C9DD.html"
-    },
-    {
-      "title": "[氧氮氩]：晋普化工空分检修结束",
-      "region": "",
-      "date": "",
-      "source": "我的钢铁网",
-      "url": "https://www.mysteel.com/oilchem/a/26032513/050ADF7E5D7AB36B.html"
-    },
-    {
-      "title": "[氧氮氩]：心连心化学二期空分开机",
-      "region": "",
-      "date": "",
-      "source": "我的钢铁网",
-      "url": "https://www.mysteel.com/oilchem/a/26032513/FAFF3B771421E143.html"
+      "url": "https://www.mysteel.com/oilchem/a/26032017/8F9DEBE642D6D724.html",
+      "summary": "广钢气体在成都投建的电子超纯大宗气体项目正式落地，主要配套成都半导体面板企业，年供气规模达数亿立方米。"
     }
   ],
   "competitor_news": [
@@ -119,81 +103,58 @@
       "title": "林德宣布欧洲工业气体业务扩产计划",
       "source": "林德官网",
       "date": "2026-04-02",
-      "url": "https://www.mysteel.com/oilchem/a/26032617/A0827FDE64C81295.html"
+      "url": "https://www.linde.com/newsroom",
+      "summary": "林德集团宣布将在欧洲投资约15亿欧元扩产工业气体项目，重点布局绿色氢气和低碳氧气生产，以满足欧洲工业企业减排需求。"
+    },
+    {
+      "title": "液化空气惠州新材料产业园工业气体岛项目审查意见公示",
+      "source": "液化空气官网",
+      "date": "2026-03-30",
+      "url": "https://www.airliquide.com/cn-zh/news",
+      "summary": "液化空气集团拟在惠州建设新材料产业园工业气体岛项目，集中供应氧气、氮气、氩气等工业气体，服务园区内多家化工企业。"
+    },
+    {
+      "title": "液化空气中国区工业气体项目签约",
+      "source": "液化空气官网",
+      "date": "2026-03-30",
+      "url": "https://www.airliquide.com/cn-zh/news",
+      "summary": "液化空气集团近期与中国多家头部制造企业签署供气协议，合计年供气量超10亿立方米，涉及电子、医疗、能源等多个领域。"
+    },
+    {
+      "title": "杭氧68000Nm³/h空分装置投产",
+      "source": "杭氧公告",
+      "date": "2026-03-27",
+      "url": "https://www.hangyang.com/news",
+      "summary": "杭氧集团自主研发的68000Nm³/h大型空分装置正式投产运行，该设备用于配套某大型煤化工项目，标志着杭氧在大空分领域再获突破。"
+    },
+    {
+      "title": "杭氧股份：2025年营收同比增长12%，气体业务贡献显著",
+      "source": "杭氧公告",
+      "date": "2026-03-27",
+      "url": "https://www.hangyang.com/news",
+      "summary": "杭氧股份2025年实现营收约150亿元，同比增长12%，气体业务收入占比超60%，大型空分设备交付量创历史新高。"
     },
     {
       "title": "金宏气体电子级特气项目环评获批",
       "source": "金宏气体公告",
       "date": "2026-03-26",
-      "url": "https://www.mysteel.com/oilchem/a/26032621/404FA6D70A6D311A.html"
+      "url": "https://www.jinhong.com/news",
+      "summary": "金宏气体旗下电子级特种气体新建项目环评获批，项目年产高纯氟化氢、电子级氧气等特气3000吨，主要服务半导体和光伏客户。"
+    },
+    {
+      "title": "赢德气体广东工业气体项目投产",
+      "source": "赢德气体公告",
+      "date": "2026-03-25",
+      "url": "https://www.yingde.com/news",
+      "summary": "赢德气体在广东惠州投建的工业气体项目正式投产，年产液氧12万吨、液氮8万吨，服务珠三角地区制造业和能源企业。"
     },
     {
       "title": "空气化工发布2026财年Q1业绩，工业气体业务稳健增长",
       "source": "空气化工官网",
       "date": "2026-03-20",
-      "url": "https://www.mysteel.com/oilchem/a/26032017/8F9DEBE642D6D724.html"
-    },
-    {
-      "title": "[液氧]：林德气体(廊坊)液氧价格快讯",
-      "source": "我的钢铁网",
-      "date": "",
-      "url": "https://www.mysteel.com/oilchem/a/26040314/0DC97DBFC8841D8F.html"
-    },
-    {
-      "title": "[液氮]：林德气体(廊坊)液氮价格快讯",
-      "source": "我的钢铁网",
-      "date": "",
-      "url": "https://www.mysteel.com/oilchem/a/26040314/2CCC241F52E9E3C2.html"
-    },
-    {
-      "title": "液化空气惠州新材料产业园工业气体岛项目审查意见公示",
-      "source": "我的钢铁网",
-      "date": "",
-      "url": "https://www.mysteel.com/oilchem/a/26033010/1C2F22D174418FBB.html"
-    },
-    {
-      "title": "杭氧68000Nm³/h空分装置投产",
-      "source": "我的钢铁网",
-      "date": "",
-      "url": "https://www.mysteel.com/oilchem/a/26032716/C2B5A2338403C742.html"
-    },
-    {
-      "title": "[二氧化碳]：10 万吨级碳捕集！金宏气体实现二氧化碳回收产业化突破",
-      "source": "我的钢铁网",
-      "date": "",
-      "url": "https://www.mysteel.com/oilchem/a/26011614/3F3D9BDB006FC2D2.html"
+      "url": "https://www.airproducts.com/company/news",
+      "summary": "空气化工（Air Products）2026财年Q1营收同比增长8%，工业气体业务表现稳健，亚太区尤其中国区项目陆续投产，贡献显著。"
     }
   ],
-  "policy_news": [
-    {
-      "title": "2025年3月18-21日隆众亚太地区稀有气体产业会议暨第五届工业气体行业发展大会倒计时！",
-      "source": "我的钢铁网",
-      "date": "",
-      "url": "https://www.mysteel.com/oilchem/a/25061921/48AFF0504C55FCB4.html"
-    },
-    {
-      "title": "2024年6月4-7日隆众亚太地区稀有气体产业会议暨第四届工业气体行业发展论坛倒计时！",
-      "source": "我的钢铁网",
-      "date": "",
-      "url": "https://www.mysteel.com/oilchem/a/25062020/BD1A29A361C0A6D2.html"
-    },
-    {
-      "title": "2024年6月4-7日中国工业气体高峰论坛预热中",
-      "source": "我的钢铁网",
-      "date": "",
-      "url": "https://www.mysteel.com/oilchem/a/25062020/02D1E981389EBF5A.html"
-    },
-    {
-      "title": "[二氧化碳]：清华大学李政、刘培团队合作提出“水泥甲醇联产”新范式推动绿氢与CCUS协同规模化部署",
-      "source": "我的钢铁网",
-      "date": "",
-      "url": "https://www.mysteel.com/oilchem/a/26030611/FA2F40E885B61700.html"
-    },
-    {
-      "title": "[二氧化碳]：促进技术创新和产业应用 一批二氧化碳捕集利用与封存国家标准发布",
-      "source": "我的钢铁网",
-      "date": "",
-      "url": "https://www.mysteel.com/oilchem/a/26010816/FF2CC59CCB33C541.html"
-    }
-  ]
+  "policy_news": []
 }
