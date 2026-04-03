@@ -1,7 +1,14 @@
 {
+  "version": "2.0",
   "status": "ok",
   "date": "2026-04-03",
-  "generated_at": "2026-04-03T19:35:50.125059+08:00",
+  "generated_at": "2026-04-03T22:51:37.153405+08:00",
+  "summary": {
+    "one_liner": "",
+    "cost_judgment": "→ 成本端平稳，无明显上涨压力",
+    "demand_judgment": "→ 半导体需求最强，液氮+特气短期支撑",
+    "supply_judgment": "→ 竞争格局头部集中，现场绑定深化"
+  },
   "price_trends": {
     "北京": {
       "液氧": {
@@ -55,8 +62,51 @@
       }
     }
   },
-  "national_avg_comment": "",
-  "project_news": [
+  "national_avg_comment": "京津冀液氧均价与国际市场基本持平",
+  "upstream": {
+    "natural_gas": {
+      "trend": "→平稳",
+      "comment": "进口LNG增产，供应趋宽松"
+    },
+    "electricity": {
+      "trend": "区域波动",
+      "comment": "夏季临近，工业电价局部上调"
+    },
+    "crude_oil": {
+      "trend": "高位震荡",
+      "comment": "地缘+供需平衡，布伦特中高位"
+    },
+    "airsep_impact": "氧/氮/氩电价敏感，成本传导有限，空分开工率稳定",
+    "hydrogen_impact": "天然气成本传导温和，氢气生产成本压力较小",
+    "cost_conclusion": "成本端无明显上涨压力，气价支撑中性（短期平稳）"
+  },
+  "demand": {
+    "electronics": {
+      "level": "强",
+      "signal": "半导体fab扩产，液氮+电子特气需求强"
+    },
+    "steel": {
+      "level": "承压",
+      "signal": "钢厂限产，液氧采购量环比持平或略降"
+    },
+    "new_energy": {
+      "level": "向好",
+      "signal": "绿氢项目推进，液氩在光伏领域需求稳定"
+    },
+    "medical": {
+      "level": "稳定",
+      "signal": "医用氧气刚需，无明显波动"
+    },
+    "judgment": "半导体需求最值得关注，液氮+特气短期支撑最强"
+  },
+  "supply": {
+    "yingde": "盈德：现场供气绑定积极，推进大型现场制气项目",
+    "hangyang": "杭氧：空分设备出口+国产替代，大型项目落地",
+    "linde_airliquide": "Linde/Air Liquide：电子特气+氢能布局，外资高端市场优势",
+    "other": "行业整合与扩产并存，国产企业份额提升，新进入者少",
+    "judgment": "竞争格局向头部集中，现场绑定深化，价格竞争压力可控"
+  },
+  "projects": [
     {
       "title": "福建雅鑫电子材料年产4万吨电子级氟化氢项目环评公示",
       "region": "福建省",
@@ -98,7 +148,7 @@
       "summary": "广钢气体在成都投建的电子超纯大宗气体项目正式落地，主要配套成都半导体面板企业，年供气规模达数亿立方米。"
     }
   ],
-  "competitor_news": [
+  "competitors": [
     {
       "title": "林德宣布欧洲工业气体业务扩产计划",
       "source": "林德官网",
@@ -142,7 +192,7 @@
       "summary": "空气化工（Air Products）2026财年Q1营收同比增长8%，工业气体业务表现稳健，亚太区尤其中国区项目陆续投产，贡献显著。"
     }
   ],
-  "policy_news": [
+  "policy": [
     {
       "title": "2025年3月18-21日隆众亚太地区稀有气体产业会议暨第五届工业气体行业发展大会倒计时！",
       "source": "我的钢铁网",
@@ -178,5 +228,38 @@
       "url": "https://www.mysteel.com/oilchem/a/26030611/FA2F40E885B61700.html",
       "summary": ""
     }
-  ]
+  ],
+  "risk": {
+    "energy_price": {
+      "level": "中",
+      "note": "地缘与季节因素，需持续关注"
+    },
+    "safety": {
+      "level": "中",
+      "note": "储运充装监管严格，持续警惕"
+    },
+    "steel_demand": {
+      "level": "中",
+      "note": "限产影响液氧需求，关注钢铁开工率"
+    },
+    "overall": "中性；最高风险为传统工业需求波动，应对：加强现场绑定与客户多元化"
+  },
+  "actions": {
+    "production": "关注电价与天然气变化，优化空分装置开工节奏，控制成本",
+    "sales": "重点跟进半导体与新能源客户，锁定高纯氮/特气与氢气项目",
+    "strategy": "提前布局氢气、电子特气产能与技术储备，关注CCUS配套机会",
+    "management": "聚焦现场供气绑定与并购整合，强化与下游龙头企业的长期合同"
+  },
+  "meta": {
+    "data_sources": [
+      "空分之家（日报）",
+      "卓创资讯（周报）",
+      "我的钢铁网",
+      "隆众资讯"
+    ],
+    "excluded": "内部交易（interco）数据不纳入分析",
+    "unit_note": "液体气体价格单位：元/吨",
+    "analyst": "Kai",
+    "unit": "Air Liquide 京津冀 Skid Tank"
+  }
 }
