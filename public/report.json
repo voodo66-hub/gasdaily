@@ -1,0 +1,79 @@
+{
+  "status": "ok",
+  "date": "2026-04-03",
+  "generated_at": "2026-04-03T09:30:00+08:00",
+  "price_trends": {
+    "北京": {
+      "液氧": { "range": "350-420", "today": "420", "trend": "up",   "change": "+50" },
+      "液氮": { "range": "300-370", "today": "370", "trend": "up",   "change": "+20" },
+      "液氩": { "range": "550-620", "today": "620", "trend": "down", "change": "-30" }
+    },
+    "天津": {
+      "液氧": { "range": "330-400", "today": "400", "trend": "up",   "change": "+35" },
+      "液氮": { "range": "290-340", "today": "340", "trend": "up",   "change": "+15" },
+      "液氩": { "range": "480-590", "today": "590", "trend": "flat", "change": "0"   }
+    },
+    "唐山": {
+      "液氧": { "range": "360-430", "today": "430", "trend": "up",   "change": "+40" },
+      "液氮": { "range": "310-375", "today": "375", "trend": "up",   "change": "+10" },
+      "液氩": { "range": "490-610", "today": "610", "trend": "down", "change": "-20" }
+    }
+  },
+  "industry_news": [
+    {
+      "title": "液氧：需求提振明显，华北液氧涨势偏强",
+      "source": "我的钢铁网",
+      "date": "2026-04-02",
+      "url": "https://www.mysteel.com/oilchem/a/26032617/A0827FDE64C81295.html"
+    },
+    {
+      "title": "河北沧州市征求新能源产业高质量发展实施意见",
+      "source": "我的钢铁网",
+      "date": "2026-03-26",
+      "url": "https://www.mysteel.com/oilchem/a/26032621/404FA6D70A6D311A.html"
+    },
+    {
+      "title": "[隆众聚焦]：需求提振明显，华北液氧涨势偏强",
+      "source": "我的钢铁网",
+      "date": "2026-04-02",
+      "url": "https://www.mysteel.com/oilchem/a/26032622/71B112A66807BA85.html"
+    },
+    {
+      "title": "[液氮]：3月液氮市场环比上涨，同比不及去年同期",
+      "source": "我的钢铁网",
+      "date": "2026-04-02",
+      "url": "https://www.mysteel.com/oilchem/a/26032618/62B29F0B921169BD.html"
+    },
+    {
+      "title": "[液氩早参]：液氩市场早间提示（20260403）",
+      "source": "我的钢铁网",
+      "date": "2026-04-03",
+      "url": "https://www.mysteel.com/oilchem/a/26040308/27A4E61AA61DBA1D.html"
+    }
+  ],
+  "project_news": [
+    {
+      "title": "沧州明珠湿化设备项目环评公示",
+      "region": "河北沧州",
+      "date": "2026-04-01"
+    },
+    {
+      "title": "天津港绿色液氢示范项目进入设备安装阶段",
+      "region": "天津",
+      "date": "2026-03-28"
+    }
+  ],
+  "policy_news": [
+    {
+      "title": "工信部就《化工行业高质量发展指导意见》征求意见",
+      "source": "工信部",
+      "date": "2026-03-20"
+    },
+    {
+      "title": "生态环境部发布《碳排放权交易管理暂行条例》",
+      "source": "生态环境部",
+      "date": "2026-02-15"
+    }
+  ],
+  "market_commentary": "液氧需求支撑，北方价格偏强运行；液氮区间整理，涨跌两难；液氩供应宽松，华北价格承压下行。"
+}
