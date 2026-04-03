@@ -5,9 +5,8 @@ import { useEffect, useState } from "react";
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 interface PriceItem {
-  range: string;
-  today: string;
-  trend: "up" | "down" | "flat";
+  price:  string;
+  trend:  string;
   change: string;
 }
 
@@ -18,22 +17,22 @@ interface PriceTrends {
 }
 
 interface NewsItem {
-  title: string;
+  title:  string;
   source?: string;
-  date?: string;
-  url?: string;
+  date?:  string;
   region?: string;
+  url?:    string;
 }
 
 interface ReportData {
-  status: "ok" | "generating" | "failed";
-  date: string;
-  generated_at: string;
-  price_trends: PriceTrends;
-  industry_news: NewsItem[];
-  project_news: NewsItem[];
-  policy_news: NewsItem[];
-  market_commentary: string;
+  status:               "ok" | "generating" | "failed";
+  date:                 string;
+  generated_at:         string;
+  price_trends:         PriceTrends;
+  national_avg_comment: string;
+  project_news:         NewsItem[];
+  competitor_news:      NewsItem[];
+  policy_news:          NewsItem[];
 }
 
 type FetchState = "loading" | "ok" | "error";
@@ -52,21 +51,12 @@ const TREND_COLOR: Record<string, string> = {
   flat: "#94a3b8",
 };
 
-function TrendBadge({ item }: { item: PriceItem }) {
-  const color = TREND_COLOR[item.trend] ?? "#94a3b8";
-  const icon  = TREND_ICON[item.trend] ?? "—";
+function TrendBadge({ change, trend }: { change: string; trend: string }) {
+  const color = TREND_COLOR[trend] ?? "#94a3b8";
+  const icon  = TREND_ICON[trend]  ?? "—";
   return (
-    <span
-      style={{
-        display:       "inline-flex",
-        alignItems:    "center",
-        gap:           "2px",
-        color,
-        fontWeight:    700,
-        fontSize:      "0.8rem",
-      }}
-    >
-      {icon}{item.change}
+    <span style={{ color, fontWeight: 700, fontSize: "0.8rem" }}>
+      {icon}{change}
     </span>
   );
 }
@@ -87,19 +77,19 @@ function SectionCard({
         border:        "1px solid #30363d",
         borderRadius:  "10px",
         padding:       "20px 24px",
-        marginBottom: "16px",
+        marginBottom:  "16px",
       }}
     >
       <h2
         style={{
-          display:     "flex",
-          alignItems:  "center",
-          gap:         "8px",
-          fontSize:    "1rem",
-          fontWeight:  700,
-          color:       "#58a6ff",
-          marginBottom:"14px",
-          borderBottom:"1px solid #30363d",
+          display:      "flex",
+          alignItems:   "center",
+          gap:          "8px",
+          fontSize:     "1rem",
+          fontWeight:   700,
+          color:        "#58a6ff",
+          marginBottom: "14px",
+          borderBottom: "1px solid #30363d",
           paddingBottom:"8px",
         }}
       >
@@ -111,7 +101,7 @@ function SectionCard({
   );
 }
 
-// ─── Error State Component ───────────────────────────────────────────────────
+// ─── Error State ─────────────────────────────────────────────────────────────
 
 function ErrorState({ generatedAt }: { generatedAt: string | null }) {
   const label = generatedAt
@@ -121,90 +111,60 @@ function ErrorState({ generatedAt }: { generatedAt: string | null }) {
   return (
     <div
       style={{
-        minHeight:   "100vh",
-        background:  "#0d1117",
-        color:       "#e6edf3",
-        display:     "flex",
-        flexDirection:"column",
-        alignItems:  "center",
-        justifyContent:"center",
-        fontFamily:  "ui-sans-serif, system-ui, sans-serif",
-        padding:     "40px 20px",
-        textAlign:   "center",
+        minHeight:       "100vh",
+        background:      "#0d1117",
+        color:           "#e6edf3",
+        display:         "flex",
+        flexDirection:   "column",
+        alignItems:      "center",
+        justifyContent:  "center",
+        fontFamily:      "ui-sans-serif, system-ui, sans-serif",
+        padding:         "40px 20px",
+        textAlign:       "center",
       }}
     >
-      {/* Logo / Icon */}
       <div
         style={{
-          width:        72,
-          height:       72,
-          borderRadius: "50%",
-          background:   "#1c2128",
-          border:       "2px solid #f85149",
-          display:      "flex",
-          alignItems:   "center",
+          width:         72,
+          height:        72,
+          borderRadius:  "50%",
+          background:    "#1c2128",
+          border:        "2px solid #f85149",
+          display:       "flex",
+          alignItems:    "center",
           justifyContent:"center",
-          fontSize:     "32px",
-          marginBottom: 24,
+          fontSize:      "32px",
+          marginBottom:  24,
         }}
       >
         ⚠️
       </div>
 
-      <h1
-        style={{
-          fontSize:     "1.5rem",
-          fontWeight:   700,
-          color:        "#f85149",
-          marginBottom: 12,
-        }}
-      >
+      <h1 style={{ fontSize: "1.5rem", fontWeight: 700, color: "#f85149", marginBottom: 12 }}>
         数据获取失败
       </h1>
-
-      <p
-        style={{
-          fontSize:     "1rem",
-          color:        "#8b949e",
-          maxWidth:     440,
-          lineHeight:   1.7,
-          marginBottom: 8,
-        }}
-      >
+      <p style={{ fontSize: "1rem", color: "#8b949e", maxWidth: 440, lineHeight: 1.7, marginBottom: 8 }}>
         今日日报尚未生成，请稍后刷新页面。
       </p>
-
-      <p
-        style={{
-          fontSize:     "0.85rem",
-          color:        "#484f58",
-          marginTop:    4,
-        }}
-      >
+      <p style={{ fontSize: "0.85rem", color: "#484f58", marginTop: 4 }}>
         {label}
       </p>
 
-      {/* Refresh button */}
       <button
         onClick={() => window.location.reload()}
         style={{
-          marginTop:   28,
-          padding:     "10px 28px",
-          background:  "#238636",
-          color:       "#ffffff",
-          border:      "none",
-          borderRadius:6,
-          fontSize:    "0.9rem",
-          fontWeight:  600,
-          cursor:      "pointer",
-          transition:  "background 0.2s",
+          marginTop:     28,
+          padding:       "10px 28px",
+          background:    "#238636",
+          color:         "#ffffff",
+          border:        "none",
+          borderRadius:  6,
+          fontSize:      "0.9rem",
+          fontWeight:    600,
+          cursor:        "pointer",
         }}
-        onMouseEnter={(e) =>
-          ((e.target as HTMLButtonElement).style.background = "#2ea043")
-        }
-        onMouseLeave={(e) =>
-          ((e.target as HTMLButtonElement).style.background = "#238636")
-        }
+        onMouseEnter={(e) => ((e.target as HTMLButtonElement).style.background = "#2ea043")}
+        onMouseLeave={(e) => ((e.target as HTMLButtonElement).style.background = "#238636")}
       >
         🔄 重新加载
       </button>
@@ -215,7 +175,7 @@ function ErrorState({ generatedAt }: { generatedAt: string | null }) {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export default function GasDailyPage() {
-  const [report,    setReport]    = useState<ReportData | null>(null);
+  const [report,     setReport]     = useState<ReportData | null>(null);
   const [fetchState, setFetchState] = useState<FetchState>("loading");
 
   useEffect(() => {
@@ -226,7 +186,7 @@ export default function GasDailyPage() {
       })
       .then((data: ReportData) => {
         setReport(data);
-        // status !== 'ok' 也按 error 处理，显示刷新提示
+        // status !== 'ok' → 显示刷新提示（不展示旧数据兜底）
         setFetchState(data.status === "ok" ? "ok" : "error");
       })
       .catch(() => {
@@ -234,7 +194,6 @@ export default function GasDailyPage() {
       });
   }, []);
 
-  // ── Error / Loading states ──
   if (fetchState === "loading") {
     return (
       <div
@@ -248,9 +207,7 @@ export default function GasDailyPage() {
           fontFamily: "ui-sans-serif, system-ui, sans-serif",
         }}
       >
-        <span style={{ color: "#58a6ff", fontSize: "1rem" }}>
-          ⏳ 加载中…
-        </span>
+        <span style={{ color: "#58a6ff", fontSize: "1rem" }}>⏳ 加载中…</span>
       </div>
     );
   }
@@ -259,98 +216,75 @@ export default function GasDailyPage() {
     return <ErrorState generatedAt={null} />;
   }
 
-  // 兜底：status 字段不是 ok 也显示错误状态
   if (report.status !== "ok") {
     return <ErrorState generatedAt={report.generated_at ?? null} />;
   }
 
-  // ── Normal data view ──
+  // ── Normal view ──
   const fmtDate = new Date(report.date + "T00:00:00+08:00").toLocaleDateString(
     "zh-CN",
     { timeZone: "Asia/Shanghai", year: "numeric", month: "long", day: "numeric" }
   );
-
   const fmtGenTime = new Date(report.generated_at).toLocaleTimeString("zh-CN", {
     timeZone: "Asia/Shanghai",
     hour:   "2-digit",
     minute: "2-digit",
   });
-
   const cities = Object.keys(report.price_trends);
 
   return (
     <div
       style={{
-        minHeight:   "100vh",
-        background:  "#0d1117",
-        color:       "#e6edf3",
-        fontFamily:  "ui-sans-serif, system-ui, sans-serif",
+        minHeight:  "100vh",
+        background: "#0d1117",
+        color:      "#e6edf3",
+        fontFamily: "ui-sans-serif, system-ui, sans-serif",
         paddingBottom: 60,
       }}
     >
-      {/* ── Header ── */}
+      {/* Header */}
       <header
         style={{
-          borderBottom: "1px solid #30363d",
-          padding:      "20px 24px 16px",
-          position:     "sticky",
-          top:          0,
-          background:   "#0d1117ee",
-          backdropFilter:"blur(8px)",
-          zIndex:       10,
+          borderBottom:   "1px solid #30363d",
+          padding:        "20px 24px 16px",
+          position:      "sticky",
+          top:            0,
+          background:     "#0d1117ee",
+          backdropFilter: "blur(8px)",
+          zIndex:         10,
         }}
       >
         <div style={{ maxWidth: 860, margin: "0 auto" }}>
           <div
             style={{
-              display:     "flex",
-              alignItems:  "baseline",
-              justifyContent:"space-between",
-              flexWrap:    "wrap",
-              gap:         8,
+              display:         "flex",
+              alignItems:     "baseline",
+              justifyContent: "space-between",
+              flexWrap:       "wrap",
+              gap:            8,
             }}
           >
-            <h1
-              style={{
-                fontSize:   "1.4rem",
-                fontWeight: 800,
-                color:      "#58a6ff",
-                margin:      0,
-              }}
-            >
+            <h1 style={{ fontSize: "1.4rem", fontWeight: 800, color: "#58a6ff", margin: 0 }}>
               🏭 工业气体日报
             </h1>
-            <span
-              style={{
-                fontSize:   "0.85rem",
-                color:      "#8b949e",
-              }}
-            >
-              {fmtDate}
-            </span>
+            <span style={{ fontSize: "0.85rem", color: "#8b949e" }}>{fmtDate}</span>
           </div>
-          <p
-            style={{
-              fontSize:   "0.78rem",
-              color:      "#484f58",
-              marginTop:  4,
-            }}
-          >
+          <p style={{ fontSize: "0.78rem", color: "#484f58", marginTop: 4 }}>
             数据来源：卓创资讯 · 我的钢铁网 · 隆众资讯 · 生成时间 {fmtGenTime}
           </p>
         </div>
       </header>
 
-      {/* ── Content ── */}
       <main style={{ maxWidth: 860, margin: "0 auto", padding: "20px 24px" }}>
 
-        {/* Price Trends */}
-        <SectionCard icon="📊" title="价格行情">
+        {/* ── Section 1: 京津冀价格行情 ── */}
+        <SectionCard icon="📊" title="京津冀价格行情">
           <div
             style={{
-              display:   "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap:       16,
+              display:           "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
+              gap:               16,
+              marginBottom:      12,
             }}
           >
             {cities.map((city) => (
@@ -359,92 +293,64 @@ export default function GasDailyPage() {
                 style={{
                   background:  "#0d1117",
                   border:      "1px solid #30363d",
-                  borderRadius:8,
+                  borderRadius: 8,
                   padding:     "14px 16px",
                 }}
               >
                 <h3
                   style={{
-                    fontSize:   "0.9rem",
-                    fontWeight: 700,
-                    color:      "#79c0ff",
-                    marginBottom:10,
-                    borderBottom:"1px solid #21262d",
-                    paddingBottom:6,
+                    fontSize:     "0.9rem",
+                    fontWeight:   700,
+                    color:        "#79c0ff",
+                    marginBottom: 10,
+                    borderBottom: "1px solid #21262d",
+                    paddingBottom: 6,
                   }}
                 >
                   {city}
                 </h3>
-                {Object.entries(report.price_trends[city]).map(
-                  ([product, item]) => (
-                    <div
-                      key={product}
-                      style={{
-                        display:        "flex",
-                        justifyContent: "space-between",
-                        alignItems:     "center",
-                        padding:        "5px 0",
-                        borderBottom:   "1px solid #21262d",
-                        fontSize:       "0.82rem",
-                      }}
-                    >
-                      <span style={{ color: "#c9d1d9" }}>{product}</span>
-                      <span style={{ color: "#8b949e", fontSize: "0.75rem" }}>
-                        {item.today}
-                      </span>
-                      <TrendBadge item={item} />
-                    </div>
-                  )
-                )}
+                {Object.entries(report.price_trends[city]).map(([prod, item]) => (
+                  <div
+                    key={prod}
+                    style={{
+                      display:        "flex",
+                      justifyContent: "space-between",
+                      alignItems:     "center",
+                      padding:        "5px 0",
+                      borderBottom:   "1px solid #21262d",
+                      fontSize:       "0.82rem",
+                    }}
+                  >
+                    <span style={{ color: "#c9d1d9" }}>{prod}</span>
+                    <span style={{ color: "#8b949e", fontSize: "0.75rem" }}>{item.price}</span>
+                    <TrendBadge change={item.change} trend={item.trend} />
+                  </div>
+                ))}
               </div>
             ))}
           </div>
+
+          {/* 全国均价对比 */}
+          {report.national_avg_comment && (
+            <div
+              style={{
+                background:  "#0d1117",
+                border:      "1px solid #30363d",
+                borderRadius: 8,
+                padding:     "12px 16px",
+                fontSize:    "0.85rem",
+                color:       "#c9d1d9",
+              }}
+            >
+              <span style={{ color: "#58a6ff", fontWeight: 700 }}>全国均价对比：</span>
+              {report.national_avg_comment}
+            </div>
+          )}
         </SectionCard>
 
-        {/* Industry News */}
-        <SectionCard icon="📰" title="行业动态">
-          <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
-            {report.industry_news.map((item, i) => (
-              <li
-                key={i}
-                style={{
-                  padding:      "10px 0",
-                  borderBottom: i < report.industry_news.length - 1 ? "1px solid #21262d" : "none",
-                }}
-              >
-                <a
-                  href={item.url ?? "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color:          "#58a6ff",
-                    textDecoration: "none",
-                    fontSize:       "0.88rem",
-                    fontWeight:     600,
-                    lineHeight:     1.5,
-                  }}
-                  onMouseEnter={(e) =>
-                    ((e.target as HTMLAnchorElement).style.textDecoration =
-                      "underline")
-                  }
-                  onMouseLeave={(e) =>
-                    ((e.target as HTMLAnchorElement).style.textDecoration =
-                      "none")
-                  }
-                >
-                  {item.title}
-                </a>
-                <div style={{ fontSize: "0.75rem", color: "#484f58", marginTop: 2 }}>
-                  {item.source} {item.date ? `· ${item.date}` : ""}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </SectionCard>
-
-        {/* Project News */}
-        {report.project_news.length > 0 && (
-          <SectionCard icon="🏭" title="项目动态">
+        {/* ── Section 2: 全国新项目动态 ── */}
+        <SectionCard icon="🏗️" title="全国新项目动态">
+          {report.project_news.length > 0 ? (
             <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
               {report.project_news.map((item, i) => (
                 <li
@@ -455,24 +361,90 @@ export default function GasDailyPage() {
                     fontSize:     "0.88rem",
                     color:        "#c9d1d9",
                     display:      "flex",
-                    justifyContent:"space-between",
+                    justifyContent: "space-between",
                     flexWrap:     "wrap",
                     gap:          4,
                   }}
                 >
                   <span>{item.title}</span>
-                  <span style={{ color: "#484f58", fontSize: "0.75rem" }}>
-                    {item.region} {item.date ? `· ${item.date}` : ""}
+                  <span style={{ color: "#484f58", fontSize: "0.75rem", flexShrink: 0 }}>
+                    {item.region && `${item.region} · `}{item.date}
                   </span>
                 </li>
               ))}
             </ul>
-          </SectionCard>
-        )}
+          ) : (
+            <p style={{ fontSize: "0.88rem", color: "#484f58", margin: 0 }}>暂无</p>
+          )}
+        </SectionCard>
 
-        {/* Policy News */}
-        {report.policy_news.length > 0 && (
-          <SectionCard icon="📋" title="政策&标准">
+        {/* ── Section 3: 竞争动态 ── */}
+        <SectionCard icon="🔍" title="竞争动态">
+          <div
+            style={{
+              display:   "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+              gap:       12,
+            }}
+          >
+            {report.competitor_news.length > 0 ? (
+              report.competitor_news.map((item, i) => (
+                <div
+                  key={i}
+                  style={{
+                    background:   "#0d1117",
+                    border:       "1px solid #21262d",
+                    borderRadius: 6,
+                    padding:      "12px 14px",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize:   "0.85rem",
+                      color:      "#c9d1d9",
+                      margin:     "0 0 6px",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {item.title}
+                  </p>
+                  <p style={{ fontSize: "0.75rem", color: "#484f58", margin: 0 }}>
+                    {item.source && `来源：${item.source}`}
+                    {item.source && item.date && " · "}
+                    {item.date}
+                  </p>
+                </div>
+              ))
+            ) : (
+              <p style={{ fontSize: "0.88rem", color: "#484f58", margin: 0, gridColumn: "1/-1" }}>暂无</p>
+            )}
+          </div>
+
+          {/* 竞品图例 */}
+          {report.competitor_news.length > 0 && (
+            <div
+              style={{
+                marginTop:  12,
+                fontSize:   "0.75rem",
+                color:      "#484f58",
+                display:    "flex",
+                flexWrap:   "wrap",
+                gap:        "4px 16px",
+              }}
+            >
+              <span>🔵 林德</span>
+              <span>🔵 液空</span>
+              <span>🔵 空气化工</span>
+              <span>🔵 杭氧</span>
+              <span>🔵 金宏</span>
+              <span>🔵 赢德</span>
+            </div>
+          )}
+        </SectionCard>
+
+        {/* ── Section 4: 政策与行业动态（无内容则跳过）── */}
+        {report.policy_news && report.policy_news.length > 0 && (
+          <SectionCard icon="📋" title="政策与行业动态">
             <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
               {report.policy_news.map((item, i) => (
                 <li
@@ -483,14 +455,14 @@ export default function GasDailyPage() {
                     fontSize:     "0.88rem",
                     color:        "#c9d1d9",
                     display:      "flex",
-                    justifyContent:"space-between",
+                    justifyContent: "space-between",
                     flexWrap:     "wrap",
                     gap:          4,
                   }}
                 >
                   <span>{item.title}</span>
-                  <span style={{ color: "#484f58", fontSize: "0.75rem" }}>
-                    {item.source} {item.date ? `· ${item.date}` : ""}
+                  <span style={{ color: "#484f58", fontSize: "0.75rem", flexShrink: 0 }}>
+                    {item.source && `${item.source} · `}{item.date}
                   </span>
                 </li>
               ))}
@@ -498,35 +470,19 @@ export default function GasDailyPage() {
           </SectionCard>
         )}
 
-        {/* Market Commentary */}
-        {report.market_commentary && (
-          <SectionCard icon="💡" title="市场简评">
-            <p
-              style={{
-                fontSize:   "0.92rem",
-                color:      "#c9d1d9",
-                lineHeight: 1.8,
-                margin:      0,
-              }}
-            >
-              {report.market_commentary}
-            </p>
-          </SectionCard>
-        )}
       </main>
 
-      {/* ── Footer ── */}
+      {/* Footer */}
       <footer
         style={{
-          borderTop:   "1px solid #21262d",
-          textAlign:   "center",
-          padding:     "20px",
-          fontSize:    "0.75rem",
-          color:       "#484f58",
+          borderTop:  "1px solid #21262d",
+          textAlign:  "center",
+          padding:    "20px",
+          fontSize:   "0.75rem",
+          color:      "#484f58",
         }}
       >
-        Air Liquide 京津冀业务区 · 工业气体日报 ·{" "}
-        {report.date} {fmtGenTime} 生成
+        Air Liquide 京津冀业务区 · 工业气体日报 · {report.date} {fmtGenTime} 生成
       </footer>
     </div>
   );
