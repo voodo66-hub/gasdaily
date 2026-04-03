@@ -366,9 +366,14 @@ export default function GasDailyPage() {
                     gap:          4,
                   }}
                 >
-                  <span>{item.title}</span>
+                  {item.url ? (
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color: "#58a6ff", textDecoration: "underline", flex: 1}}>{item.title}</a>
+                  ) : (
+                    <span style={{flex: 1}}>{item.title}</span>
+                  )}
                   <span style={{ color: "#484f58", fontSize: "0.75rem", flexShrink: 0 }}>
                     {item.region && `${item.region} · `}{item.date}
+                    {item.url && <> · <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color: "#58a6ff"}}>🔗</a></>}
                   </span>
                 </li>
               ))}
@@ -406,12 +411,17 @@ export default function GasDailyPage() {
                       lineHeight: 1.5,
                     }}
                   >
-                    {item.title}
+                    {item.url ? (
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color: "#79c0ff", textDecoration: "underline"}}>{item.title}</a>
+                    ) : (
+                      item.title
+                    )}
                   </p>
                   <p style={{ fontSize: "0.75rem", color: "#484f58", margin: 0 }}>
                     {item.source && `来源：${item.source}`}
                     {item.source && item.date && " · "}
                     {item.date}
+                    {item.url && <> · <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color: "#58a6ff"}}>🔗查看</a></>}
                   </p>
                 </div>
               ))
@@ -460,9 +470,14 @@ export default function GasDailyPage() {
                     gap:          4,
                   }}
                 >
-                  <span>{item.title}</span>
+                  {item.url ? (
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color: "#58a6ff", textDecoration: "underline", flex: 1}}>{item.title}</a>
+                  ) : (
+                    <span style={{flex: 1}}>{item.title}</span>
+                  )}
                   <span style={{ color: "#484f58", fontSize: "0.75rem", flexShrink: 0 }}>
                     {item.source && `${item.source} · `}{item.date}
+                    {item.url && <> · <a href={item.url} target="_blank" rel="noopener noreferrer" style={{color: "#58a6ff"}}>🔗</a></>}
                   </span>
                 </li>
               ))}
